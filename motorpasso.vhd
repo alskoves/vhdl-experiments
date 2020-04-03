@@ -13,17 +13,17 @@ architecture giroflex of motorpasso is
 	type passo is (ZERO, UM, DOIS, TRES, QUATRO, CINCO, SEIS, SETE);
 	signal proest, atuest: passo;
 begin
-	process(clock,reset)
+	process(clock, reset)
 	begin
-		if	(reset='1') then
+		if (reset='1') then
 			atuest <= ZERO;
 		elsif (clock'event and clock='0') then
 			atuest <= proest;
 		end if;
 	end process;
-	process(direcao,enable,proest,atuest)
+	process(direcao,enable)
 	begin
-		if 	(enable='1') then
+		if (enable='1') then
 			if (direcao='1') then
 				case atuest is
 					when ZERO	=>
